@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <script src="script.js" defer></script>
+  <title>Scholar Track</title>
+</head>
+
+<body onload="loadTasks()">
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h1>Scholar Track</h1>
+    <ul class="nav-links">
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="tasks.html">Task Manager</a></li>
+      <li><a href="habits.html">Habit Tracker</a></li>
+      <li><a href="analytics.html">User Analytics</a></li>
+      <li><a href="profile.html">Profile</a></li>
+    </ul>
+  </nav>
+
+
+  <section class="section">
+    <div class="smallContainer">
+      <h1>Add Tasks</h1>
+      <sub>optional fields: date and priority</p>
+      <form id="taskForm">
+        <input type="text" class="inputField" name="taskName" placeholder="Task name" required>
+
+    <input type="date" class="inputField" name="dueDate">
+    <select class="inputField" name="priority">
+      <option value="0">None</option>
+      <option value="1">High</option>
+      <option value="2">Medium</option>
+      <option value="3">Low</option>
+    </select>
+    <button class="button" type="submit">Add Task</button>
+    </form>
+    </div>
+  </section>
+
+  <!-- Section 3 -->
+  <section class="section">
+    <div class="container">
+      <h2>My Tasks</h2>
+      <div class="divider"></div>
+      <ul id="task-list">
+
+      </ul>
+    </div>
+  </section>
+
+    <section class="section">
+    <div class="container">
+      <h2>Options</h2>
+      <div class="divider"></div>
+      <p>Add a custom priority. This can be used to add priorities for specific academic classes or personal things</p>
+      <button onclick="alert('Feature Under Development')">Add custom priority</button>
+      
+      <p>Modify the default task priority colors</p>
+      <button onclick="alert('Feature Under Development')">Change priority colors</button>
+      
+    </div>
+  </section>
+
+  <section>
+    <div class="footer">
+      <p> Copyright @ Cameron Hastings 2026</p>
+    </div>
+  </section>
+</body>
+
+</html>

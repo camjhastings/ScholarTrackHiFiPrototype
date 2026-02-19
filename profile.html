@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<title>Scholar Track</title>
+<script>
+  function loadProfile() {
+    const user = document.getElementById("user");
+    const pass = document.getElementById("pass");
+    user.innerHTML = localStorage.getItem("username");
+    pass.innerHTML = localStorage.getItem("password");
+  }
+  function changeUsername() {
+    const current = localStorage.getItem("username");
+    let newUsername = prompt("Please enter your new username",current);
+    localStorage.setItem("username",newUsername);
+    loadProfile();
+  }
+    function changePassword() {
+    const current = localStorage.getItem("password");
+    let newPassword = prompt("Please enter your new password",current);
+    localStorage.setItem("password",newPassword);
+    loadProfile();
+  }
+
+  function logout() {
+    window.location.href = "index.html";
+  }
+</script>
+
+</head>
+
+<body onload="loadProfile()">
+
+<!-- Navbar -->
+<nav class="navbar">
+  <h1 >Scholar Track</h1>
+  <ul class="nav-links">
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="tasks.html">Task Manager</a></li>
+    <li><a href="habits.html">Habit Tracker</a></li>
+    <li><a href="analytics.html">User Analytics</a></li>
+    <li><a href="profile.html">Profile</a></li>
+  </ul>
+</nav>
+
+
+<!-- Section 3 -->
+<section class="profile">
+  <div class="box">
+    <h2>Edit Profile</h2>
+    <div class="divider"></div>
+      <p>Username</p>
+      <button onclick="changeUsername()" class="button">Change Username</button>
+    <div class="subBox">
+      <p id="user">USER</p>
+    </div>
+
+    <p>Password</p>
+          <button onclick="changePassword()" class="button">Change Password</button>
+    <div class="subBox">
+      <p id="pass">PASS</p>
+    </div>
+
+        <p>Page is under development. Full profile settings and features are not available at this time.</p>
+    <button class="button" onclick="logout()">Logout</button>
+<div>
+    <div class="gray-box">
+      <p>Change Notifications</p>
+      <button onclick="alert('Feature Under Development')">Change Preferences</button>
+    </div>
+
+        <div class="gray-box">
+      <p>Change Location Access</p>
+      <button onclick="alert('Feature Under Development')">Change Preferences</button>
+    </div>
+
+        <div class="gray-box">
+      <p>Link Canvas Calendar</p>
+      <button onclick="alert('Feature Under Development')">Log in to Canvas</button>
+    </div>
+
+        <div class="gray-box">
+      <p>Link Microsoft Outlook Calendar</p>
+      <button onclick="alert('Feature Under Development')">Log in to Microsoft</button>
+    </div>
+</div>
+
+  </div>
+</section>
+
+<section>
+	<div class="footer">
+	<p>Copyright @ Cameron Hastings 2026</p>
+	</div>
+</section>
+
+</body>
+</html>

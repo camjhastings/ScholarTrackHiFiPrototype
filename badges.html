@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<title>Scholar Track</title>
+
+
+</head>
+
+<body onload="loadTasks()">
+
+<!-- Navbar -->
+<nav class="navbar">
+  <h1>Scholar Track</h1>
+  <ul class="nav-links">
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="tasks.html">Task Manager</a></li>
+    <li><a href="habits.html">Habit Tracker</a></li>
+    <li><a href="analytics.html">User Analytics</a></li>
+    <li><a href="profile.html">Profile</a></li>
+  </ul>
+</nav>
+
+<!-- Section 1 -->
+<section class="section">
+  <div class="container">
+    <h2>Welcome to Scholar Track!</h2>
+    <div class="divider"></div>
+    <h2>Badges</h2>
+  </div>
+
+</section>
+
+
+
+       
+
+
+
+<div class="grid-container">
+
+  <div id="id01" class="popup">
+  <div class="popup-box">
+    <div class="popup-sub-box">
+      <span onclick="document.getElementById('id01').style.display='none'"
+        class="w3-button w3-display-topright">&times;</span>
+      <p>Provide your location to improve user analytics</p>
+      <form id="location-access">
+      <fieldset class="input-field">
+        <p class="input-field-label">Allow Location Access?</p>
+        <label><input type="radio" name="location" value="yes" required> Yes</label><br>
+        <label><input type="radio" name="location" value="no"> No</label>
+      </fieldset>
+      <div class="grid-separator"></div>
+      <input type="submit" class="button"></input>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+    <section class="section" class="column" style="background-color: #ddd;">
+    <div class="container">
+      <h2>My Tasks</h2>
+      <div class="divider"></div>
+      <ul id="task-list">
+
+      </ul>
+    </div>
+  </section>
+  
+<section class="section" class="column" style="background-color: #ddd;">
+  <div class="container">
+    <h2>Recommended Habits</h2>
+    <div class="divider"></div>
+
+    <ul id="habit-list"></ul>
+  </div>
+</section>
+
+</div>
+<section class="footer-section">
+	<div class="footer">
+	<p>         Copyright @ Cameron Hastings 2026</p>
+	</div>
+</section>
+
+</body>
+</html>
