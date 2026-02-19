@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<script src="survey.js" defer></script>
+<title>Scholar Track</title>
+</head>
+
+<body>
+
+<nav class="navbar">
+  <h1>Scholar Track</h1>
+</nav>
+
+<section class="login">
+  <div class="login-container">
+
+    <h2>Personal Survey</h2>
+    <div class="divider"></div>
+    <p>Tell us what you struggle with so we can recommend helpful habits.</p>
+
+    <form id="user-survey">
+
+      <fieldset class="input-field">
+        <p class="input-field-label">Do you struggle with attention?</p>
+        <label><input type="radio" name="attention" value="yes" required> Yes</label><br>
+        <label><input type="radio" name="attention" value="no"> No</label>
+      </fieldset>
+      <div class="grid-separator"></div>
+      <fieldset class="input-field">
+        <p class="input-field-label">Do you struggle with anxiety?</p>
+        <label><input type="radio" name="anxiety" value="yes" required> Yes</label><br>
+        <label><input type="radio" name="anxiety" value="no"> No</label>
+      </fieldset>
+      <div class="grid-separator"></div>
+      <fieldset class="input-field">
+        <p class="input-field-label">Do you struggle with motivation?</p>
+        <label><input type="radio" name="motivation" value="yes" required> Yes</label><br>
+        <label><input type="radio" name="motivation" value="no"> No</label>
+      </fieldset>
+      <div class="grid-separator"></div>
+      <fieldset class="input-field">
+        <p class="input-field-label">Do you struggle with depression?</p>
+        <label><input type="radio" name="depression" value="yes" required> Yes</label><br>
+        <label><input type="radio" name="depression" value="no"> No</label>
+      </fieldset>
+
+      <br>
+      <button type="submit">Save Preferences</button>
+      
+
+    </form>
+    <a href="dashboard.html">
+      <p>I'd prefer to not answer</p>
+    </a>
+  </div>
+</section>
+
+<section class="footer-section">
+	<div class="footer">
+	<p>         Copyright @ Cameron Hastings 2026</p>
+	</div>
+</section>
+
+</body>
+</html>
