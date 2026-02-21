@@ -100,7 +100,7 @@ function completeHabit(id, element) {
   localStorage.setItem("habits", JSON.stringify(habits));
 
   element.classList.add("task-completing");
-
+  
   setTimeout(loadHabits, 400);
 }
 

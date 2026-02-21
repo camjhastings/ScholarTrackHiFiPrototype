@@ -199,6 +199,7 @@ button:hover {
 
 .task-item input[type="checkbox"]:checked {
   transform: scale(1.6);
+  background: #a1a1a1;
 }
 
 /* task completion animation */
@@ -403,6 +404,12 @@ button:hover {
 /* Badge Grid View */
 
 .grid-container {
+    display: grid; /* Activates CSS grid for the container */
+    grid-template-columns: 1fr 2fr; /* Creates two columns of equal width (1 fraction each) */
+    gap: 0px; /* Adds a gap between the columns */
+}
+
+.badge-grid-container {
     display: grid; /* Activates CSS grid for the container */
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr; /* Creates two columns of equal width (1 fraction each) */
     gap: 0px; /* Adds a gap between the columns */
