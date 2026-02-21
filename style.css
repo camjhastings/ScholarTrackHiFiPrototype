@@ -411,7 +411,7 @@ button:hover {
 
 .badge-grid-container {
     display: grid; /* Activates CSS grid for the container */
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr; /* Creates two columns of equal width (1 fraction each) */
+    grid-template-columns: 1fr 2fr; /* Creates two columns of equal width (1 fraction each) */
     gap: 0px; /* Adds a gap between the columns */
 }
 
@@ -434,4 +434,5 @@ button:hover {
   width: auto;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+
 }
