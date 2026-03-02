@@ -34,8 +34,20 @@
 </section>
 
 <section class="section">
+  <div class="smallContainer">
+    <h1>Add Habits</h1>
+    <form id="habitForm"
+      onsubmit="event.preventDefault(); add_habit(document.getElementById('habitName').value); this.reset();">
+      <input type="text" id="habitName" class="inputField" name="habitName" placeholder="Habit name" required>
+      <button class="button" type="submit">Add Habit</button>
+    </form>
+  </div>
+</section>
+
+
+<section class="section">
   <div class="container">
-    <h2>Current Habits</h2>
+    <h2>My Habits</h2>
     <div class="divider"></div>
 
     <ul id="active-habit-list"></ul>
@@ -54,10 +66,10 @@
 <!-- Section 3 -->
 <section class="section">
   <div class="container">
-    <h2>Another Section</h2>
+    <h2>Streak Goals</h2>
     <div class="divider"></div>
-    <p>More placeholder content goes here.</p>
-    <p>You can add more sections or components later.</p>
+    <h3>You're highest streak was 12 days!</p>
+    <p>Keep it up!</p>
   </div>
 </section>
 

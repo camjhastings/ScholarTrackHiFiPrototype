@@ -435,3 +435,75 @@ button:hover {
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
+
+.remove-btn {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.remove-btn:hover {
+  background-color: #721616;
+}
+
+/* The default action button */
+.check-off-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.check-off-btn:hover {
+  background-color: #45a049;
+}
+
+/* Style for when the habit is finished */
+.check-off-btn.completed {
+  background-color: #a5d6a7;
+  cursor: default;
+  opacity: 0.7;
+}
+
+.habit-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+#active-habit-list, #habit-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9f9f9;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border-left: 5px solid #3498db;
+}
+
+.recommended {
+  border-left-color: #95a5a6; /* Grey border for recommendations */
+}
+
+.add-rec-btn {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}

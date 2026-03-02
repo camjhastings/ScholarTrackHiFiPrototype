@@ -31,12 +31,25 @@ function loadTasks() {
 
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
+  // --- CHECK FOR EMPTY STATE ---
+  if (tasks.length === 0) {
+    const emptyMessage = document.createElement("div");
+    emptyMessage.className = "empty-state";
+    emptyMessage.innerHTML = `
+      <p style="text-align: center; color: #888; padding: 20px;">
+        🎉 You have no remaining tasks!
+      </p>
+    `;
+    taskList.appendChild(emptyMessage);
+    return; // Exit the function early
+  }
+
+  // --- RENDER TASKS ---
   tasks.forEach(task => {
     const li = document.createElement("li");
     li.className = "task-item";
 
-    const priority = task.dueDate || 0;
-
+    // Set Priority Classes
     if (task.priority === 1) li.classList.add("priority-high");
     if (task.priority === 2) li.classList.add("priority-medium");
     if (task.priority === 3) li.classList.add("priority-low");
@@ -52,12 +65,10 @@ function loadTasks() {
       <input type="checkbox">
     `;
 
-    // ✅ checkbox must be defined HERE
     const checkbox = li.querySelector("input");
 
     checkbox.addEventListener("change", () => {
       li.classList.add("task-completing");
-
       setTimeout(() => {
         removeTask(task.id);
       }, 400);
