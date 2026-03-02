@@ -25,66 +25,95 @@ const HABIT_LIBRARY = {
 };
 
 function initializeHabits() {
-  if (localStorage.getItem("habits")) return;
-
-  const profile = JSON.parse(localStorage.getItem("userProfile"));
-  if (!profile) return;
-
-  let habits = [];
-
-  Object.keys(profile).forEach(need => {
-    if (profile[need] && HABIT_LIBRARY[need]) {
-      HABIT_LIBRARY[need].forEach(name => {
-        habits.push({
-          id: crypto.randomUUID(),
-          name,
-          streak: 0,
-          lastCompleted: null
-        });
-      });
-    }
-  });
-
-  localStorage.setItem("habits", JSON.stringify(habits));
+  if (!localStorage.getItem("habits")) {
+    localStorage.setItem("habits", JSON.stringify([]));
+  }
 }
 
 function loadHabits() {
-  const list = document.getElementById("habit-list");
-  list.innerHTML = "";
-
+  const activeList = document.getElementById("active-habit-list");
+  const recommendedList = document.getElementById("habit-list"); // This might be null on Dashboard
+  
   const habits = JSON.parse(localStorage.getItem("habits")) || [];
+  const today = new Date().toDateString();
 
-  habits.forEach(habit => {
-    const li = document.createElement("li");
-    li.className = "task-item";
-
-    li.innerHTML = `
-      <div>
-        <strong>${habit.name}</strong><br>
-        🔥 Streak: ${habit.streak} days
-      </div>
-      <input type="checkbox">
-    `;
-
-    const checkbox = li.querySelector("input");
-
-    checkbox.addEventListener("change", () => {
-      completeHabit(habit.id, li);
+  // --- RENDER ACTIVE HABITS (Runs on both Dashboard and Habits page) ---
+  if (activeList) {
+    activeList.innerHTML = "";
+    habits.forEach(habit => {
+      const isDoneToday = habit.lastCompleted === today;
+      const li = document.createElement("li");
+      li.className = "task-item";
+      li.innerHTML = `
+        <div class="habit-info">
+          <strong>${habit.name}</strong><br>
+          🔥 Streak: ${habit.streak} days
+        </div>
+        <div class="habit-controls">
+          <button class="check-off-btn ${isDoneToday ? 'completed' : ''}" ${isDoneToday ? 'disabled' : ''}>
+            ${isDoneToday ? 'Done Today' : 'Check Off'}
+          </button>
+        </div>
+      `;
+      
+      li.querySelector(".check-off-btn").addEventListener("click", () => completeHabit(habit.id, li));
+      activeList.appendChild(li);
     });
+  }
 
-    list.appendChild(li);
+  // RENDER RECOMMENDED HABITS (Only runs on Habits page)
+  if (recommendedList) {
+    recommendedList.innerHTML = "";
+    const profile = JSON.parse(localStorage.getItem("userProfile")) || {};
+    
+    Object.keys(profile).forEach(category => {
+      if (profile[category] && HABIT_LIBRARY[category]) {
+        HABIT_LIBRARY[category].forEach(habitName => {
+          const alreadyAdded = habits.some(h => h.name === habitName);
+          if (!alreadyAdded) {
+            const li = document.createElement("li");
+            li.className = "task-item recommended";
+            li.innerHTML = `
+              <span>${habitName}</span>
+              <button class="add-rec-btn">Add to My Habits</button>
+            `;
+            li.querySelector("button").addEventListener("click", () => add_habit(habitName));
+            recommendedList.appendChild(li);
+          }
+        });
+      }
+    });
+  }
+}
+
+function removeHabit(id) {
+  let habits = JSON.parse(localStorage.getItem("habits")) || [];
+  habits = habits.filter(h => h.id !== id);
+  localStorage.setItem("habits", JSON.stringify(habits));
+  loadHabits();
+}
+
+function add_habit(name) {
+  if (!name) return;
+  let habits = JSON.parse(localStorage.getItem("habits")) || [];
+  
+  habits.push({
+    id: crypto.randomUUID(),
+    name: name,
+    streak: 0,
+    lastCompleted: null
   });
+
+  localStorage.setItem("habits", JSON.stringify(habits));
+  loadHabits();
 }
 
 function completeHabit(id, element) {
   let habits = JSON.parse(localStorage.getItem("habits")) || [];
-
   const habit = habits.find(h => h.id === id);
-  if (!habit) return;
-
   const today = new Date().toDateString();
 
-  if (habit.lastCompleted === today) return;
+  if (!habit || habit.lastCompleted === today) return;
 
   const yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
@@ -96,11 +125,9 @@ function completeHabit(id, element) {
   }
 
   habit.lastCompleted = today;
-
   localStorage.setItem("habits", JSON.stringify(habits));
-
-  element.classList.add("task-completing");
   
+  element.classList.add("task-completing");
   setTimeout(loadHabits, 400);
 }
 
@@ -108,4 +135,3 @@ document.addEventListener("DOMContentLoaded", () => {
   initializeHabits();
   loadHabits();
 });
-
